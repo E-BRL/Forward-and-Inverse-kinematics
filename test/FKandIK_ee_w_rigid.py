@@ -136,7 +136,7 @@ def inverseKinematics(x_goal,y_goal,z_goal):
                 
             cur_err = mod_err
                         
-    return cur_err, yaw_st, (bend_st-1)
+    return cur_err, yaw_st, (bend_st+1)
 
 # Examples for testing the inverse kinemaitcs
 pos = forwardKinematics(3,5)
