@@ -3,9 +3,9 @@ clear;
 clc;
 
 %% Load parameters
-bendData = readmatrix("C:/Users/bsgx043/Desktop/Seokchang/Forward-and-Inverse-kinematics/test/bend_data.csv");
-yawData = readmatrix("C:/Users/bsgx043/Desktop/Seokchang/Forward-and-Inverse-kinematics/test/yaw_data.csv");
-baseData = readmatrix("C:/Users/bsgx043/Desktop/Seokchang/Forward-and-Inverse-kinematics/test/bend_base_data.csv");
+bendData = readmatrix("C:/Users/bsgx043/Desktop/Forward-and-Inverse-kinematics/KinematicsMATLAB/Robotics/FlexibleSyringe/bend_data.csv");
+yawData = readmatrix("C:/Users/bsgx043/Desktop/Forward-and-Inverse-kinematics/KinematicsMATLAB/Robotics/FlexibleSyringe/yaw_data.csv");
+baseData = readmatrix("C:/Users/bsgx043/Desktop/Forward-and-Inverse-kinematics/KinematicsMATLAB/Robotics/FlexibleSyringe/bend_base_data.csv");
 
 Base = [0,0,0];
 

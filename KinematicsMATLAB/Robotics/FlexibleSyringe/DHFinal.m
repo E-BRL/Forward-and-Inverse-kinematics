@@ -1,7 +1,7 @@
 function [Base,T01, T02, T03, T04, curve] = DHFinal(BendStep,bendData,yawData,baseData,BasePos,TMatrix)
 
 
-ben_pos = FK3(0,BendStep,bendData,yawData,baseData);
+ben_pos = FK3(0,BendStep,bendData,yawData,baseData)/1000;
 
 %% Frame Assigment
 
@@ -12,17 +12,17 @@ Base = [1 0 0 0
     
 T1 = [1 0 0 0
       0 1 0 0
-      0 0 1 138
+      0 0 1 0.138
       0 0 0 1];
         
 T2 = [1 0 0 0
       0 1 0 0
-      0 0 1 25
+      0 0 1 0.025
       0 0 0 1];
 
 T3 = [1 0 0 0
       0 1 0 0
-      0 0 1 5
+      0 0 1 0.005
       0 0 0 1];
          
 T4 = [1 0 0 0
@@ -50,7 +50,7 @@ RotateXneg90 = [1 0 0 0
             0 0 0 1];
 
 
-Base = TMatrix*RotateXneg90*RotateZ90*Base;
+Base = TMatrix*RotateZ90*Base;
 
 Base(1,4) = BasePos(1); %Base xpos
 Base(2,4) = BasePos(2); %Base ypos

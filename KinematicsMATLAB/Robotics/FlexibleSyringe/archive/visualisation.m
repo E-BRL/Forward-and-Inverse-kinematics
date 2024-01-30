@@ -2,7 +2,7 @@ close all;
 clear;
 clc;
 
-plotFrames = true;
+plotFrames = false;
 
 %% Define Base Location
 Base = [1,0,0,0
@@ -23,14 +23,14 @@ RotateZ90 = [0 -1 0 0
 %rotate by 90 degrees in y axis and z axis
 Base = RotateZ90*RotateY90*Base; 
 
-Base(1,4 )= 0; %Base xpos
+Base(1,4)= 0; %Base xpos
 Base(2,4) = 0; %Base ypos
 base(3,4) = 0; %Base zpos
 
 
 %% Define thetas
 Theta2 = deg2rad(0);
-Theta4 = deg2rad(30);
+Theta4 = deg2rad(90);
 
 %% Define Constants
 Theta1 = 0; Theta3 = 0; Theta5 = 0;
@@ -86,12 +86,12 @@ Z45 = [Position4(3),Position5(3)];
 
 plot3(X01,Y01,Z01,'-k', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
 hold on
-%plot3(X12,Y12,Z12, '-r', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
-plot3(curve_points(:,1), curve_points(:,2), curve_points(:,3), 'r-', 'LineWidth', 2);
+plot3(X12,Y12,Z12, '-r', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
+%plot3(curve_points(:,1), curve_points(:,2), curve_points(:,3), 'r-', 'LineWidth', 2);
 hold on
 plot3(X23,Y23,Z23, '-k', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
-%plot3(X34,Y34,Z34, '-b', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
-plot3(curve2(:,1), curve2(:,2), curve2(:,3), 'b-', 'LineWidth', 2);
+plot3(X34,Y34,Z34, '-b', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
+%plot3(curve2(:,1), curve2(:,2), curve2(:,3), 'b-', 'LineWidth', 2);
 plot3(X45,Y45,Z45, '-k', 'LineWidth', 1, 'Marker', 'o', 'MarkerSize',2, 'MarkerEdgeColor', 'k', 'MarkerFaceColor', 'k')
 if plotFrames
     plotFrameAxes(T01, 0.01); 

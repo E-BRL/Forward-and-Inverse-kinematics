@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Enter the path of data.csv
-path = "C://Users//bsgx043//Desktop//Seokchang//Forward-and-Inverse-kinematics//test//bend_data.csv"
-path2 = "C://Users//bsgx043//Desktop//Seokchang//Forward-and-Inverse-kinematics//test//yaw_data.csv"
-path3 = "C://Users//bsgx043//Desktop//Seokchang//Forward-and-Inverse-kinematics//test//bend_base_data.csv"
+path = "C://Users//bsgx043//Desktop//Forward-and-Inverse-kinematics//test//bend_data.csv"
+path2 = "C://Users//bsgx043//Desktop//Forward-and-Inverse-kinematics//test//yaw_data.csv"
+path3 = "C://Users//bsgx043//Desktop//Forward-and-Inverse-kinematics//test//bend_base_data.csv"
 
 # Data reading
 # row = how much the motor move? = # resolution = # * 0.29296875 deg 
@@ -69,13 +69,10 @@ def forwardKinematics(yaw, bend):
     ee_pos = rot_pos_bend+tran_pos
     # ee_pos = np.array([rot_pos_bend[0]-tran_pos[0], rot_pos_bend[1]-tran_pos[1], rot_pos_bend[2]-tran_pos[2]]) 
 
-    return yaw_pos, ben_base_pos, ben_pos, ee_pos, yA, xA
+    return rot_pos_yaw, rot_pos_bend_base, rot_pos_bend
 
-yawPos, BendBase, BendEnd, EEPos, yA, xA = forwardKinematics(0, 10)
+yawPos, BendBase, BendEnd= forwardKinematics(10, 0)
 
-print("EE Position", EEPos)
-print("xA: ", xA)
-print("yA: ", yA)
 
 X00 = np.array([0, 0])
 Y00 = np.array([0, 0])
@@ -93,10 +90,6 @@ X23 = np.array([BendBase[0], BendEnd[0]])
 Y23 = np.array([BendBase[1], BendEnd[1]])
 Z23 = np.array([BendBase[2], BendEnd[2]])
 
-X34 = np.array([BendEnd[0], EEPos[0]])
-Y34 = np.array([BendEnd[1], EEPos[1]])
-Z34 = np.array([BendEnd[2], EEPos[2]])
-
 
 # Creating figure
 fig = plt.figure()
@@ -109,16 +102,16 @@ ax.plot3D(X00, Y00, Z00, 'gray')
 ax.plot3D(X01, Y01, Z01, 'red')
 ax.plot3D(X12, Y12, Z12, 'gray')
 ax.plot3D(X23, Y23, Z23, 'blue')
-ax.plot3D(X34, Y34, Z34, 'gray')
+
 
 # Setting aspect ratio to be equal
 max_range = np.array([X00.max()-X00.min(), Y00.max()-Y00.min(), Z00.max()-Z00.min()]).max() / 2.0
 mid_x = (X00.max()+X00.min()) * 0.5
 mid_y = (Y00.max()+Y00.min()) * 0.5
-mid_z = (Z00.max()+Z00.min()) * 0.5
+mid_z = (Z23.max()+Z23.min()) * 0.5
 ax.set_xlim(mid_x - max_range, mid_x + max_range)
 ax.set_ylim(mid_y - max_range, mid_y + max_range)
-ax.set_zlim(mid_z - max_range, mid_z + max_range)
+ax.set_zlim(0, mid_z + max_range)
 
 # Labeling axes
 ax.set_xlabel('X axis')
